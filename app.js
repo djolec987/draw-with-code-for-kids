@@ -141,9 +141,21 @@ function nacrtajRaster() {
   ctx.restore();
 }
 
+// --- Reset settings ---
+function resetujPodesavanja() {
+  penColor = "black";
+  penSize = 2;
+  fillColor = null;
+  originX = 0;
+  originY = canvas.height;
+  currentX = 0;
+  currentY = 0;
+}
+
 // --- Run code from textarea ---
 document.getElementById("runButton").addEventListener("click", () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+  resetujPodesavanja(); // Reset svih podešavanja
   nacrtajRaster();
   try {
     const code = document.getElementById("codeInput").value;

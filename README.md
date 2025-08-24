@@ -17,7 +17,7 @@ Umesto da koriste miš, deca pišu jednostavne naredbe na srpskom jeziku (latini
 1. Sačuvaj datoteke:
    - `index.html`
    - `style.css`
-   - `script.js`
+   - `app.js`
 2. Otvori **index.html** u pretraživaču.
 3. U prozorčiću za unos koda napiši željene naredbe i klikni na dugme **"Pokreni kod"**.
 
