@@ -117,28 +117,9 @@ function nacrtajRaster() {
     ctx.stroke();
   }
 
-  // labels
-  ctx.fillStyle = "#333";
-  ctx.font = "10px sans-serif";
-  ctx.textAlign = "left";
-
-  // bottom numbers (aligned to bottom edge)
-  ctx.textBaseline = "bottom";
-  for (let x = 0; x <= canvas.width; x += 50) {
-    const coord = Math.round(x - originX);
-    ctx.fillText(coord.toString(), x + 2, canvas.height - 2);
-  }
-
-  // left numbers (aligned to left edge)
-  ctx.textBaseline = "middle";
-  for (let y = 0; y <= canvas.height; y += 50) {
-    const coord = Math.round(originY - y);
-    if (coord != 0) {
-        ctx.fillText(coord.toString(), 2, y);
-    }    
-  }
-
   ctx.restore();
+
+  drawCoordinateLabels();
 }
 
 // --- Reset settings ---
@@ -164,6 +145,50 @@ document.getElementById("runButton").addEventListener("click", () => {
     alert("Greška u kodu: " + err.message);
   }
 });
+
+function drawCoordinateLabels() {
+  const xLabels = document.getElementById("xLabels");
+  const yLabels = document.getElementById("yLabels");
+  if (xLabels && yLabels) {
+    // X ose
+    xLabels.innerHTML = "";
+    for (let x = 0; x <= canvas.width; x += 50) {
+      const label = document.createElement("div");
+      label.style.textAlign = "center";
+      label.textContent = x;
+      xLabels.appendChild(label);
+      const nextLabel = document.createElement("div");
+      nextLabel.style.textAlign = "center";
+      nextLabel.textContent = x + 50;
+      xLabels.appendChild(nextLabel);
+      nextLabel.style.margin = "0";
+      label.style.margin = "0";
+      label.style.marginRight = `${
+        50 - (nextLabel.offsetWidth / 2 + label.offsetWidth / 2)
+      }px`;
+      xLabels.removeChild(nextLabel);
+    }
+    // Y ose
+    yLabels.innerHTML = "";
+    for (let y = 0; y <= canvas.height; y += 50) {
+      if (y !== 0) {
+        // skip 0 to avoid overlap
+        const label = document.createElement("div");
+        label.textContent = y;
+        yLabels.prepend(label); // prepend to have 0 at bottom
+        const nextLabel = document.createElement("div");
+        nextLabel.textContent = y + 50;
+        yLabels.prepend(nextLabel);
+        label.style.margin = "0";
+        nextLabel.style.margin = "0";
+        label.style.marginBottom = `${
+          50 - (nextLabel.offsetHeight / 2 + label.offsetHeight / 2)
+        }px`;
+        yLabels.removeChild(nextLabel);
+      }
+    }
+  }
+}
 
 // draw grid on load
 nacrtajRaster();

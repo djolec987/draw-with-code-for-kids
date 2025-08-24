@@ -8,7 +8,13 @@
 <body>
   <h1>Aplikacija za crtanje kodom</h1>
   <div id="app">
-    <canvas id="drawingCanvas" width="600" height="400"></canvas>
+    <div style="display: flex; flex-direction: row; align-items: flex-start;">
+      <div id="yLabels" style="display: flex; flex-direction: column; justify-content: flex-end; height: 400px; min-width: 28px; font-size: 10px; color: #333; text-align: right;"></div>
+      <div style="display: flex; flex-direction: column;">
+        <canvas id="drawingCanvas" width="600" height="400"></canvas>
+        <div id="xLabels" style="height: 16px; display: flex; flex-direction: row; font-size: 10px; color: #333; width: 600px;"></div>
+      </div>
+    </div>
     <div id="controls">
       <textarea id="codeInput" placeholder="Ovde upiši svoje naredbe..."></textarea>
       <button id="runButton">Pokreni kod</button>

@@ -68,3 +68,14 @@ button {
 #docs td b {
   font-family: monospace;
 }
+
+#xLabels {
+  margin-top: 2px;
+  color: #333;
+}
+
+#yLabels {
+  margin-right: 2px;
+  color: #333;
+  text-align: right;
+}
