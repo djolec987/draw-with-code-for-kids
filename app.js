@@ -42,10 +42,25 @@ function postaviDebljinu(s) {
   penSize = s;
 }
 
+let fillColor = null; // Dodato za boju popune
+
+function postaviBojuPopune(r, g, b) {
+  fillColor = `rgb(${r},${g},${b})`;
+}
+
+// Ako želite da isključite popunu, možete napraviti i ovu funkciju:
+function bezPopune() {
+  fillColor = null;
+}
+
 function nacrtajPravougaonik(x, y, w, h) {
   const [cx, cy] = toCanvasCoords(x, y);
   ctx.lineWidth = penSize;
   ctx.strokeStyle = penColor;
+  if (fillColor) {
+    ctx.fillStyle = fillColor;
+    ctx.fillRect(cx - w / 2, cy - h / 2, w, h);
+  }
   ctx.strokeRect(cx - w / 2, cy - h / 2, w, h);
 }
 
@@ -53,6 +68,23 @@ function nacrtajKrug(x, y, r) {
   const [cx, cy] = toCanvasCoords(x, y);
   ctx.beginPath();
   ctx.arc(cx, cy, r, 0, 2 * Math.PI);
+  if (fillColor) {
+    ctx.fillStyle = fillColor;
+    ctx.fill();
+  }
+  ctx.strokeStyle = penColor;
+  ctx.lineWidth = penSize;
+  ctx.stroke();
+}
+
+function nacrtajElipsu(x, y, a, b) {
+  const [cx, cy] = toCanvasCoords(x, y);
+  ctx.beginPath();
+  ctx.ellipse(cx, cy, a / 2, b / 2, 0, 0, 2 * Math.PI);
+  if (fillColor) {
+    ctx.fillStyle = fillColor;
+    ctx.fill();
+  }
   ctx.strokeStyle = penColor;
   ctx.lineWidth = penSize;
   ctx.stroke();
@@ -63,17 +95,6 @@ function postaviPocetak(x, y) {
   originX = x;
   originY = canvas.height - y; // keep bottom-left as (0,0) by default
 }
-
-// --- Nova funkcija: elipsa ---
-function nacrtajElipsu(x, y, a, b) {
-  const [cx, cy] = toCanvasCoords(x, y);
-  ctx.beginPath();
-  ctx.ellipse(cx, cy, a / 2, b / 2, 0, 0, 2 * Math.PI);
-  ctx.strokeStyle = penColor;
-  ctx.lineWidth = penSize;
-  ctx.stroke();
-}
-
 
 // --- Raster (ruler) ---
 function nacrtajRaster() {

@@ -32,6 +32,8 @@ Umesto da koriste miš, deca pišu jednostavne naredbe na srpskom jeziku (latini
 - `nacrtajPravougaonik(x, y, a, b)` – crta pravougaonik sa centrom u `(x,y)` i stranicama `a` i `b`.  
 - `nacrtajKrug(x, y, r)` – crta krug sa centrom u `(x,y)` i poluprečnikom `r`. 
 - `nacrtajElipsu(x, y, a, b)` – crta elipsu centriranu u `(x,y)`, koja dodiruje sredine stranica pravougaonika dimenzija `a` i `b`. 
+- `postaviBojuPopune(r, g, b)` – postavlja boju popune za sledeće oblike (pravougaonik, krug, elipsa).
+- `bezPopune()` – isključuje popunjavanje oblika (oblici će biti samo iscrtani linijom).
 
 ---
 
@@ -50,6 +52,10 @@ postaviBoju(255, 0, 0);   // crvena boja
 postaviDebljinu(3);       // debljina linije
 pomeriNa(50, 50);
 linijaDo(200, 50);
+postaviBojuPopune(0, 255, 0); // zelena popuna
 nacrtajKrug(150, 150, 40);
+bezPopune();
 nacrtajPravougaonik(100, 100, 60, 40);
+postaviBojuPopune(0, 0, 255); // plava popuna
 nacrtajElipsu(300, 150, 100, 60); // elipsa centrirana u (300,150)
+```
