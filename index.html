@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8">
+  <title>Aplikacija za crtanje kodom</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Aplikacija za crtanje kodom</h1>
+  <div id="app">
+    <canvas id="drawingCanvas" width="600" height="400"></canvas>
+    <div id="controls">
+      <textarea id="codeInput" placeholder="Ovde upiši svoje naredbe..."></textarea>
+      <button id="runButton">Pokreni kod</button>
+    </div>
+  </div>
+
+<h2>Dokumentacija funkcija</h2>
+<div id="docs">
+  <table>
+    <tr>
+      <th>Funkcija</th>
+      <th>Opis</th>
+      <th>Parametri</th>
+    </tr>
+    <tr>
+      <td><b>pomeriNa(x, y)</b></td>
+      <td>Pomera olovku na tačku (x, y) bez crtanja linije.</td>
+      <td>x, y – koordinate</td>
+    </tr>
+    <tr>
+      <td><b>linijaDo(x, y)</b></td>
+      <td>Povlači liniju od trenutne tačke do (x, y).</td>
+      <td>x, y – koordinate</td>
+    </tr>
+    <tr>
+      <td><b>postaviBoju(r, g, b)</b></td>
+      <td>Postavlja boju olovke.</td>
+      <td>r, g, b – vrednosti boje (0–255)</td>
+    </tr>
+    <tr>
+      <td><b>postaviDebljinu(s)</b></td>
+      <td>Postavlja debljinu linije.</td>
+      <td>s – debljina u pikselima</td>
+    </tr>
+    <tr>
+      <td><b>nacrtajPravougaonik(x, y, a, b)</b></td>
+      <td>Crta pravougaonik centriran u tački (x, y).</td>
+      <td>x, y – centar<br>a – širina<br>b – visina</td>
+    </tr>
+    <tr>
+      <td><b>nacrtajKrug(x, y, r)</b></td>
+      <td>Crta krug centriran u tački (x, y).</td>
+      <td>x, y – centar<br>r – poluprečnik</td>
+    </tr>
+    <tr>
+      <td><b>postaviPocetak(x, y)</b></td>
+      <td>Pomeraj koordinatni sistem tako da (0,0) bude u tački (x, y).</td>
+      <td>x, y – nova nula koordinata</td>
+    </tr>
+    <tr>
+      <td><b>nacrtajElipsu(x, y, a, b)</b></td>
+      <td>Crta elipsu centriranu u (x, y), koja dodiruje sredine stranica zamišljenog pravougaonika dimenzija a x b.</td>
+      <td>x, y – centar<br>a – širina pravougaonika<br>b – visina pravougaonika</td>
+    </tr>
+  </table>
+</div>
+
+
+  <script src="app.js"></script>
+</body>
+</html>
