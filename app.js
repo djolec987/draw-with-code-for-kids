@@ -34,11 +34,11 @@ function linijaDo(x, y) {
   currentY = cy;
 }
 
-function postaviBoju(r, g, b) {
+function postviBojuOlovke(r, g, b) {
   penColor = `rgb(${r},${g},${b})`;
 }
 
-function postaviDebljinu(s) {
+function postaviDebljinuOlovke(s) {
   penSize = s;
 }
 
@@ -200,8 +200,8 @@ function drawCoordinateLabels() {
 
 function drawSmiley() {
   document.getElementById("codeInput").value = `// Primer koda za crtanje smeška
-  
-postaviBoju(0, 0, 0);
+
+postviBojuOlovke(0, 0, 0);
 postaviBojuPopune(255, 220, 40);
 nacrtajKrug(300, 200, 120);
 
@@ -214,8 +214,8 @@ nacrtajKrug(260, 245, 7);
 nacrtajKrug(350, 245, 7);
 
 bezPopune();
-postaviBoju(180, 80, 0);
-postaviDebljinu(6);
+postaviBojuOlovke(180, 80, 0);
+postaviDebljinuOlovke(6);
 pomeriNa(250, 160);
 linijaDo(270, 145);
 linijaDo(300, 140);
@@ -230,3 +230,37 @@ linijaDo(350, 160);
 // draw grid on load
 nacrtajRaster();
 drawSmiley();
+
+let poligonTemena = [];
+
+function zapocniPoligon() {
+  poligonTemena = [];
+}
+
+function dodajTeme(x, y) {
+  poligonTemena.push([x, y]);
+}
+
+function zavrsiPoligon() {
+  if (poligonTemena.length < 3) {
+    alert("Poligon mora imati bar 3 temena!");
+    poligonTemena = [];
+    return;
+  }
+  ctx.beginPath();
+  const [startX, startY] = toCanvasCoords(poligonTemena[0][0], poligonTemena[0][1]);
+  ctx.moveTo(startX, startY);
+  for (let i = 1; i < poligonTemena.length; i++) {
+    const [cx, cy] = toCanvasCoords(poligonTemena[i][0], poligonTemena[i][1]);
+    ctx.lineTo(cx, cy);
+  }
+  ctx.closePath();
+  ctx.lineWidth = penSize;
+  ctx.strokeStyle = penColor;
+  if (fillColor) {
+    ctx.fillStyle = fillColor;
+    ctx.fill();
+  }
+  ctx.stroke();
+  poligonTemena = [];
+}

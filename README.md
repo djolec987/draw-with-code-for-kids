@@ -27,8 +27,8 @@ Umesto da koriste miš, deca pišu jednostavne naredbe na srpskom jeziku (latini
 
 - `pomeriNa(x, y)` – pomera "olovku" na određenu tačku (bez crtanja).  
 - `linijaDo(x, y)` – povlači liniju od trenutne pozicije do nove tačke.  
-- `postaviBoju(r, g, b)` – postavlja boju olovke (vrednosti od 0 do 255).  
-- `postaviDebljinu(s)` – postavlja debljinu linije.  
+- `postaviBojuOlovke(r, g, b)` – postavlja boju olovke (vrednosti od 0 do 255).  
+- `postaviDebljinuOlovke(s)` – postavlja debljinu linije.  
 - `nacrtajPravougaonik(x, y, a, b)` – crta pravougaonik sa centrom u `(x,y)` i stranicama `a` i `b`.  
 - `nacrtajKrug(x, y, r)` – crta krug sa centrom u `(x,y)` i poluprečnikom `r`. 
 - `nacrtajElipsu(x, y, a, b)` – crta elipsu centriranu u `(x,y)`, koja dodiruje sredine stranica pravougaonika dimenzija `a` i `b`. 
@@ -37,6 +37,9 @@ Umesto da koriste miš, deca pišu jednostavne naredbe na srpskom jeziku (latini
 - `resetujPodesavanjaPlatna()` – vraća koordinatni sistem i trenutnu poziciju olovke na početne vrednosti.
 - `resetujPodesavanjaAlata()` – vraća boju olovke, debljinu i boju popune na podrazumevane vrednosti.
 - `resetujSvaPodesavanja()` – resetuje sva podešavanja platna i alata na podrazumevane vrednosti.
+- `zapocniPoligon()` – počinje definisanje novog poligona i briše prethodno postavljena temena.
+- `dodajTeme(x, y)` – dodaje teme (x, y) trenutnom poligonu.
+- `zavrsiPoligon()` – iscrtava poligon sa zadatim temenima (mora biti bar 3 temena). Nakon crtanja temena se brišu.
 
 ---
 

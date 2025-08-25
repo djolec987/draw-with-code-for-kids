@@ -40,12 +40,12 @@
       <td>x, y – koordinate</td>
     </tr>
     <tr>
-      <td><b>postaviBoju(r, g, b)</b></td>
+      <td><b>postaviBojuOlovke(r, g, b)</b></td>
       <td>Postavlja boju olovke.</td>
       <td>r, g, b – vrednosti boje (0–255)</td>
     </tr>
     <tr>
-      <td><b>postaviDebljinu(s)</b></td>
+      <td><b>postaviDebljinuOlovke(s)</b></td>
       <td>Postavlja debljinu linije.</td>
       <td>s – debljina u pikselima</td>
     </tr>
@@ -92,6 +92,21 @@
     <tr>
       <td><b>resetujSvaPodesavanja()</b></td>
       <td>Resetuje sva podešavanja platna i alata na podrazumevane vrednosti.</td>
+      <td>–</td>
+    </tr>
+    <tr>
+      <td><b>zapocniPoligon()</b></td>
+      <td>Počinje definisanje novog poligona i briše prethodno postavljena temena.</td>
+      <td>–</td>
+    </tr>
+    <tr>
+      <td><b>dodajTeme(x, y)</b></td>
+      <td>Dodaje teme (x, y) trenutnom poligonu.</td>
+      <td>x, y – koordinate temena</td>
+    </tr>
+    <tr>
+      <td><b>zavrsiPoligon()</b></td>
+      <td>Iscrtava poligon sa zadatim temenima. Mora biti zadato bar 3 temena. Nakon crtanja temena se brišu.</td>
       <td>–</td>
     </tr>
   </table>
