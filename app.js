@@ -34,7 +34,7 @@ function linijaDo(x, y) {
   currentY = cy;
 }
 
-function postviBojuOlovke(r, g, b) {
+function postaviBojuOlovke(r, g, b) {
   penColor = `rgb(${r},${g},${b})`;
 }
 
@@ -201,7 +201,7 @@ function drawCoordinateLabels() {
 function drawSmiley() {
   document.getElementById("codeInput").value = `// Primer koda za crtanje smeška
 
-postviBojuOlovke(0, 0, 0);
+postaviBojuOlovke(0, 0, 0);
 postaviBojuPopune(255, 220, 40);
 nacrtajKrug(300, 200, 120);
 
