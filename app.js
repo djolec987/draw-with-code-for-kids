@@ -227,20 +227,12 @@ nacrtajKrug(350, 245, 7);
 bezPopune();
 postaviBojuOlovke(180, 80, 0);
 postaviDebljinuOlovke(6);
-pomeriNa(250, 160);
-linijaDo(270, 145);
-linijaDo(300, 140);
-linijaDo(330, 145);
-linijaDo(350, 160);
+nacrtajKrivu(250,160,300,125,350,160)
   `;
 
   const code = document.getElementById("codeInput").value;
   eval(code); // execute user code (safe for local learning use)
 }
-
-// draw grid on load
-nacrtajRaster();
-drawSmiley();
 
 let poligonTemena = [];
 
@@ -382,3 +374,16 @@ function zavrsiPutanju() {
   putanjaKoraci = [];
   putanjaAktivna = false;
 }
+
+function nacrtajTacku(x, y) {
+  const [cx, cy] = toCanvasCoords(x, y);
+  ctx.beginPath();
+  ctx.arc(cx, cy, penSize / 2, 0, 2 * Math.PI);
+  ctx.fillStyle = penColor;
+  ctx.fill();
+}
+
+// draw grid on load
+nacrtajRaster();
+drawSmiley();
+

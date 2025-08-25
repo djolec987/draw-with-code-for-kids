@@ -16,6 +16,9 @@ Umesto da koriste miš, deca pišu jednostavne naredbe na srpskom jeziku (latini
 
 1. Sačuvaj datoteke:
    - `index.html`
+   - `kako-radi.html`
+   - `nauci-vise.html`
+   - `o-aplikaciji.html`
    - `style.css`
    - `app.js`
 2. Otvori **index.html** u pretraživaču.
@@ -46,6 +49,7 @@ Umesto da koriste miš, deca pišu jednostavne naredbe na srpskom jeziku (latini
   Kvadratna: `nacrtajKrivu(x1, y1, x2, y2, x3, y3)`<br>
   Kubna: `nacrtajKrivu(x1, y1, x2, y2, x3, y3, x4, y4)`
 - `zavrsiPutanju()` – zatvara i iscrtava putanju (kombinacija linija i krivih). Popunjava
+- `nacrtajTacku(x, y)` – crta tačku u zadatoj tački. Veličina tačke odgovara debljini
 
 ---
 

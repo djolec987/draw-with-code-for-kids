@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8">
+  <title>Nauči više</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <ul id="main-menu">
+      <li><a href="index.html">Početna</a></li>
+      <li><a href="o-aplikaciji.html">O Aplikaciji</a></li>
+      <li><a href="kako-radi.html">Kako radi</a></li>
+      <li><a href="nauci-vise.html">Nauči više</a></li>
+      <li><a href="index.html">Dokumentacija funkcija</a></li>
+    </ul>
+  </nav>
+  <h1 style="text-align:center; color:#0074d9; letter-spacing:1px; margin-bottom:0.5em;">
+    <span class="emoji" style="margin-right: 16px;">📚</span>Nauči više
+  </h1>
+  <ul class="submenu">
+    <li><a href="#" data-section="koordinatni-sistem" class="active">Koordinatni sistem</a></li>
+    <li><a href="#" data-section="funkcije-parametri">Funkcije i parametri</a></li>
+    <li><a href="#" data-section="osnovni-oblici">Osnovni oblici</a></li>
+    <li><a href="#" data-section="poligoni">Poligoni</a></li>
+    <li><a href="#" data-section="krive">Krive</a></li>
+    <li><a href="#" data-section="putanje">Putanje</a></li>
+    <li><a href="#" data-section="boje">Boje</a></li>
+  </ul>
+
+  <div id="lesson-content">
+    <div class="lesson-box" id="lekcija-koordinatni-sistem">
+      <h2>Koordinatni sistem</h2>
+      <p>
+        Da bi računar znao gde da nacrta neki oblik, koristi se <strong>koordinatni sistem</strong>. To je zamišljena mreža linija koja pokriva celo platno (canvas). Svaka tačka na platnu ima svoje <strong>koordinate</strong> – dva broja: <b>x</b> i <b>y</b>.
+      </p>
+      <div class="placeholder">
+        [Ovde ubaci sliku koordinatnog sistema na canvasu]
+      </div>
+      <p>
+        <b>X osa</b> je vodoravna linija i pokazuje koliko je tačka udaljena ulevo ili udesno. <br>
+        <b>Y osa</b> je uspravna linija i pokazuje koliko je tačka udaljena nagore ili nadole.
+      </p>
+      <p>
+        Na našem platnu, <strong>početak koordinatnog sistema (0, 0)</strong> nalazi se u donjem levom uglu. Kada povećavaš <b>x</b>, pomeraš se udesno, a kada povećavaš <b>y</b>, ideš nagore.
+      </p>
+      <div class="placeholder">
+        [Ovde ubaci sliku sa označenim (0,0), x i y osom, i primerom tačke (200, 100)]
+      </div>
+      <p>
+        Na primer, tačka sa koordinatama <b>(200, 100)</b> znači: idi 200 koraka udesno i 100 koraka nagore od donjeg levog ugla.
+      </p>
+      <p>
+        Kada pišeš kod za crtanje, skoro svaka funkcija traži da navedeš koordinate. Tako računar zna gde da nacrta liniju, krug ili bilo koji drugi oblik.
+      </p>
+      <p>
+        <span style="color:#0074d9; font-weight:bold;">Zabavna vežba:</span> Probaj da nacrtaš tačku na različitim mestima na platnu i vidi kako se menja njen položaj kada menjaš x i y!
+      </p>
+    </div>
+    <div class="lesson-box" id="lekcija-funkcije-parametri" style="display:none;">
+      <h2>Funkcije i parametri</h2>
+      <p>
+        <strong>Funkcija</strong> je posebna naredba u programiranju koja govori računaru da uradi nešto određeno. U ovoj aplikaciji, funkcije koristiš da nacrtaš oblike, promeniš boju ili debljinu olovke i još mnogo toga.
+      </p>
+      <div class="placeholder">
+        [Ovde ubaci sliku ili ilustraciju sa primerom funkcije i strelicama na parametre]
+      </div>
+      <p>
+        Svaka funkcija ima svoje <strong>ime</strong> i <strong>parametre</strong>. Ime funkcije pišeš prvo, a u zagradi navodiš parametre – to su brojevi ili reči koje funkciji govore šta tačno da uradi.
+      </p>
+      <p>
+        Na primer, funkcija za crtanje kruga izgleda ovako:
+        <br>
+        <code>nacrtajKrug(300, 200, 50)</code>
+      </p>
+      <ul>
+        <li><b>nacrtajKrug</b> je ime funkcije.</li>
+        <li><b>300</b> je x koordinata centra kruga.</li>
+        <li><b>200</b> je y koordinata centra kruga.</li>
+        <li><b>50</b> je poluprečnik kruga.</li>
+      </ul>
+      <p>
+        <strong>Redosled parametara je veoma važan!</strong> Ako ih pomešaš, krug neće biti nacrtan tamo gde si želeo ili neće izgledati kako si zamislio.
+      </p>
+      <p>
+        Neke funkcije imaju više parametara, a neke manje. Uvek možeš da pogledaš <b>Dokumentaciju funkcija</b> da vidiš šta koja funkcija očekuje.
+      </p>
+      <p>
+        <span style="color:#0074d9; font-weight:bold;">Zabavna vežba:</span> Probaj da promeniš brojeve u funkciji <code>nacrtajKrug</code> i vidi šta se dešava na platnu. Tako ćeš naučiti kako različiti parametri utiču na oblike koje crtaš.
+      </p>
+    </div>
+    <div class="lesson-box" id="lekcija-osnovni-oblici" style="display:none;">
+      <h2>Osnovni oblici</h2>
+      <p>
+        Osnovni oblici su najjednostavniji crteži koje možeš napraviti pomoću koda. To su: <strong>pravougaonik</strong>, <strong>krug</strong>, <strong>elipsa</strong>, <strong>tačka</strong> i <strong>linija</strong>. Svaki od ovih oblika ima svoju funkciju i parametre koje treba da navedeš kako bi ga nacrtao.
+      </p>
+
+      <h3>Pravougaonik</h3>
+      <div class="placeholder">
+        [Ovde ubaci sliku pravougaonika na platnu]
+      </div>
+      <p>
+        Pravougaonik crtaš funkcijom <code>nacrtajPravougaonik(x, y, širina, visina)</code>.<br>
+        <b>x</b> i <b>y</b> su koordinate centra pravougaonika, a <b>širina</b> i <b>visina</b> određuju njegovu veličinu.<br>
+        Možeš da popuniš pravougaonik bojom tako što pre crtanja pozoveš <code>postaviBojuPopune(r, g, b)</code>. Ako želiš samo ivicu bez popune, koristi <code>bezPopune()</code>.
+      </p>
+
+      <h3>Krug</h3>
+      <div class="placeholder">
+        [Ovde ubaci sliku kruga na platnu]
+      </div>
+      <p>
+        Krug crtaš funkcijom <code>nacrtajKrug(x, y, r)</code>.<br>
+        <b>x</b> i <b>y</b> su koordinate centra kruga, a <b>r</b> je poluprečnik.<br>
+        I krug možeš popuniti bojom ili nacrtati samo njegovu ivicu, isto kao kod pravougaonika.
+      </p>
+
+      <h3>Elipsa</h3>
+      <div class="placeholder">
+        [Ovde ubaci sliku elipse na platnu]
+      </div>
+      <p>
+        Elipsu crtaš funkcijom <code>nacrtajElipsu(x, y, a, b)</code>.<br>
+        <b>x</b> i <b>y</b> su koordinate centra elipse, <b>a</b> je širina, a <b>b</b> visina elipse.<br>
+        Elipsu možeš popuniti bojom ili nacrtati samo ivicu, kao i ostale oblike.
+      </p>
+
+      <h3>Tačka</h3>
+      <div class="placeholder">
+        [Ovde ubaci sliku tačke na platnu]
+      </div>
+      <p>
+        Tačku crtaš funkcijom <code>nacrtajTacku(x, y)</code>.<br>
+        <b>x</b> i <b>y</b> su koordinate tačke. Veličina tačke zavisi od debljine olovke (<code>postaviDebljinuOlovke</code>).<br>
+        Ako želiš da pomeriš "olovku" na određeno mesto bez crtanja, koristi <code>pomeriNa(x, y)</code>.
+      </p>
+
+      <h3>Linija</h3>
+      <div class="placeholder">
+        [Ovde ubaci sliku linije na platnu]
+      </div>
+      <p>
+        Liniju crtaš funkcijom <code>linijaDo(x, y)</code>.<br>
+        Prvo postaviš početnu tačku sa <code>pomeriNa(x1, y1)</code>, a zatim nacrtaš liniju do nove tačke sa <code>linijaDo(x2, y2)</code>.<br>
+        Debljinu i boju linije podešavaš funkcijama <code>postaviDebljinuOlovke(s)</code> i <code>postaviBojuOlovke(r, g, b)</code>.
+      </p>
+
+      <h3>Popunjavanje oblika</h3>
+      <div class="placeholder">
+        [Ovde ubaci sliku popunjenog i nepopunjenog oblika]
+      </div>
+      <p>
+        Da bi oblik bio popunjen bojom, koristi <code>postaviBojuPopune(r, g, b)</code> pre crtanja oblika.<br>
+        Ako želiš da oblik bude samo nacrtan bez popune, koristi <code>bezPopune()</code>.<br>
+        Primer:
+        <br>
+        <code>
+          postaviBojuPopune(255, 200, 0);<br>
+          nacrtajKrug(200, 150, 50);<br>
+          bezPopune();<br>
+          nacrtajKrug(350, 150, 50);
+        </code>
+      </p>
+
+      <p>
+        <span style="color:#0074d9; font-weight:bold;">Zabavna vežba:</span> Probaj da nacrtaš više oblika na platnu, promeniš im boje i veličine, i napraviš svoju sliku koristeći pravougaonike, krugove, elipse, tačke i linije!
+      </p>
+    </div>
+    <div class="lesson-box" id="lekcija-poligoni" style="display:none;">
+      <h2>Poligoni</h2>
+      <div class="placeholder">[Ovde ide lekcija o poligonima]</div>
+    </div>
+    <div class="lesson-box" id="lekcija-krive" style="display:none;">
+      <h2>Krive</h2>
+      <div class="placeholder">[Ovde ide lekcija o krivama]</div>
+    </div>
+    <div class="lesson-box" id="lekcija-putanje" style="display:none;">
+      <h2>Putanje</h2>
+      <div class="placeholder">[Ovde ide lekcija o putanjama]</div>
+    </div>
+    <div class="lesson-box" id="lekcija-boje" style="display:none;">
+      <h2>Boje</h2>
+      <div class="placeholder">[Ovde ide lekcija o bojama]</div>
+    </div>
+  </div>
+
+  <script>
+    // Submenu switching logic
+    const submenuLinks = document.querySelectorAll('.submenu li a');
+    const lessons = {
+      "koordinatni-sistem": document.getElementById("lekcija-koordinatni-sistem"),
+      "funkcije-parametri": document.getElementById("lekcija-funkcije-parametri"),
+      "osnovni-oblici": document.getElementById("lekcija-osnovni-oblici"),
+      "poligoni": document.getElementById("lekcija-poligoni"),
+      "krive": document.getElementById("lekcija-krive"),
+      "putanje": document.getElementById("lekcija-putanje"),
+      "boje": document.getElementById("lekcija-boje"),
+    };
+
+    submenuLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        // Active class
+        submenuLinks.forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+        // Show selected lesson
+        Object.values(lessons).forEach(div => div.style.display = "none");
+        const section = this.getAttribute('data-section');
+        if (lessons[section]) lessons[section].style.display = "";
+      });
+    });
+  </script>
+</body>
+</html>

@@ -53,7 +53,8 @@ button {
   background: #fff;
 }
 
-#docs th, #docs td {
+#docs th,
+#docs td {
   border: 1px solid #ccc;
   padding: 8px 12px;
   text-align: left;
@@ -78,4 +79,190 @@ button {
   margin-right: 2px;
   color: #333;
   text-align: right;
+}
+
+#main-menu {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 36px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+  padding: 12px 32px;
+  align-items: center;
+}
+
+#main-menu li a {
+  text-decoration: none;
+  color: #0074d9;
+  font-weight: bold;
+  font-size: 19px;
+  padding: 8px 18px;
+  border-radius: 6px;
+  transition:
+    background 0.2s,
+    color 0.2s,
+    box-shadow 0.2s;
+  letter-spacing: 0.5px;
+  display: inline-block;
+}
+
+#main-menu li a:hover,
+#main-menu li a:focus {
+  background: #0074d9;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 116, 217, 0.10);
+  text-decoration: none;
+  outline: none;
+}
+
+.about-app-box {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1.18em;
+  background: #f9fbff;
+  border-radius: 18px;
+  box-shadow: 0 4px 18px rgba(0, 116, 217, 0.08);
+  padding: 32px 28px 28px 28px;
+  margin-top: 24px;
+  color: #234;
+  line-height: 1.7;
+}
+
+.about-app-box p {
+  margin-bottom: 1.2em;
+}
+
+.about-app-box strong {
+  color: #0074d9;
+}
+
+.about-app-box .emoji {
+  font-size: 1.3em;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
+.about-app-box ul {
+  margin: 1.2em 0 0 1.2em;
+  padding: 0;
+  list-style: "✨ ";
+}
+
+.about-app-box ul li {
+  margin-bottom: 0.5em;
+}
+
+.how-it-works-box {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1.13em;
+  background: #f9fbff;
+  border-radius: 18px;
+  box-shadow: 0 4px 18px rgba(0, 116, 217, 0.08);
+  padding: 32px 28px 28px 28px;
+  margin-top: 24px;
+  color: #234;
+  line-height: 1.7;
+}
+
+.how-it-works-box p {
+  margin-bottom: 1.2em;
+}
+
+.how-it-works-box strong {
+  color: #0074d9;
+}
+
+.how-it-works-box .emoji {
+  font-size: 1.2em;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
+.how-it-works-box ul {
+  margin: 1.2em 0 0 1.2em;
+  padding: 0;
+  list-style: "👉 ";
+}
+
+.how-it-works-box ul li {
+  margin-bottom: 0.5em;
+}
+
+.how-it-works-box code {
+  background: #eaf4ff;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 1em;
+  color: #0074d9;
+}
+
+.submenu {
+  display: flex;
+  gap: 18px;
+  list-style: none;
+  padding: 0;
+  margin: 24px 0 32px 0;
+  justify-content: center;
+}
+
+.submenu li a {
+  text-decoration: none;
+  color: #0074d9;
+  font-weight: bold;
+  font-size: 17px;
+  padding: 6px 16px;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.submenu li a:hover,
+.submenu li a:focus {
+  background: #0074d9;
+  color: #fff;
+}
+
+.lesson-box {
+  max-width: 700px;
+  margin: 0 auto 40px auto;
+  background: #f9fbff;
+  border-radius: 18px;
+  box-shadow: 0 4px 18px rgba(0, 116, 217, 0.08);
+  padding: 32px 28px 28px 28px;
+  color: #234;
+  line-height: 1.7;
+  font-size: 1.13em;
+}
+
+.lesson-box h2 {
+  color: #0074d9;
+  margin-top: 0;
+  margin-bottom: 0.7em;
+  letter-spacing: 0.5px;
+}
+
+.lesson-box img {
+  display: block;
+  margin: 18px auto 18px auto;
+  max-width: 350px;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 116, 217, 0.10);
+}
+
+.lesson-box .placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eaf4ff;
+  color: #0074d9;
+  border: 2px dashed #b3d8f6;
+  border-radius: 10px;
+  height: 180px;
+  margin: 18px 0;
+  font-size: 1.1em;
+  font-style: italic;
 }
