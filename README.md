@@ -40,6 +40,12 @@ Umesto da koriste miš, deca pišu jednostavne naredbe na srpskom jeziku (latini
 - `zapocniPoligon()` – počinje definisanje novog poligona i briše prethodno postavljena temena.
 - `dodajTeme(x, y)` – dodaje teme (x, y) trenutnom poligonu.
 - `zavrsiPoligon()` – iscrtava poligon sa zadatim temenima (mora biti bar 3 temena). Nakon crtanja temena se brišu.
+- `zapocniPutanju()` – počinje definisanje nove putanje (kombinacija linija i krivih). Briše prethodne korake putanje.
+- `dodajTemePutanje(x, y)` – dodaje pravo teme (x, y) trenutnoj putanji (prava linija do te tačke).
+- `nacrtajKrivu(...)` – dodaje Bezierovu krivu trenutnoj putanji (ako je putanja aktivna) ili crta samostalnu krivu.<br>
+  Kvadratna: `nacrtajKrivu(x1, y1, x2, y2, x3, y3)`<br>
+  Kubna: `nacrtajKrivu(x1, y1, x2, y2, x3, y3, x4, y4)`
+- `zavrsiPutanju()` – zatvara i iscrtava putanju (kombinacija linija i krivih). Popunjava
 
 ---
 

@@ -24,6 +24,11 @@ function pomeriNa(x, y) {
 
 function linijaDo(x, y) {
   const [cx, cy] = toCanvasCoords(x, y);
+  if (penSize === 0) {
+    currentX = cx;
+    currentY = cy;
+    return;
+  }
   ctx.lineWidth = penSize;
   ctx.strokeStyle = penColor;
   ctx.beginPath();
@@ -55,13 +60,15 @@ function bezPopune() {
 
 function nacrtajPravougaonik(x, y, w, h) {
   const [cx, cy] = toCanvasCoords(x, y);
-  ctx.lineWidth = penSize;
-  ctx.strokeStyle = penColor;
   if (fillColor) {
     ctx.fillStyle = fillColor;
     ctx.fillRect(cx - w / 2, cy - h / 2, w, h);
   }
-  ctx.strokeRect(cx - w / 2, cy - h / 2, w, h);
+  if (penSize !== 0) {
+    ctx.lineWidth = penSize;
+    ctx.strokeStyle = penColor;
+    ctx.strokeRect(cx - w / 2, cy - h / 2, w, h);
+  }
 }
 
 function nacrtajKrug(x, y, r) {
@@ -72,9 +79,11 @@ function nacrtajKrug(x, y, r) {
     ctx.fillStyle = fillColor;
     ctx.fill();
   }
-  ctx.strokeStyle = penColor;
-  ctx.lineWidth = penSize;
-  ctx.stroke();
+  if (penSize !== 0) {
+    ctx.strokeStyle = penColor;
+    ctx.lineWidth = penSize;
+    ctx.stroke();
+  }
 }
 
 function nacrtajElipsu(x, y, a, b) {
@@ -85,9 +94,11 @@ function nacrtajElipsu(x, y, a, b) {
     ctx.fillStyle = fillColor;
     ctx.fill();
   }
-  ctx.strokeStyle = penColor;
-  ctx.lineWidth = penSize;
-  ctx.stroke();
+  if (penSize !== 0) {
+    ctx.strokeStyle = penColor;
+    ctx.lineWidth = penSize;
+    ctx.stroke();
+  }
 }
 
 // --- Configurable origin ---
@@ -255,12 +266,119 @@ function zavrsiPoligon() {
     ctx.lineTo(cx, cy);
   }
   ctx.closePath();
-  ctx.lineWidth = penSize;
-  ctx.strokeStyle = penColor;
   if (fillColor) {
     ctx.fillStyle = fillColor;
     ctx.fill();
   }
-  ctx.stroke();
+  if (penSize !== 0) {
+    ctx.lineWidth = penSize;
+    ctx.strokeStyle = penColor;
+    ctx.stroke();
+  }
   poligonTemena = [];
+}
+
+let putanjaKoraci = [];
+let putanjaAktivna = false;
+
+function zapocniPutanju() {
+  putanjaKoraci = [];
+  putanjaAktivna = true;
+}
+
+function dodajTemePutanje(x, y) {
+  if (!putanjaAktivna) {
+    alert("Prvo pozovi zapocniPutanju()");
+    return;
+  }
+  putanjaKoraci.push({ tip: "linija", x, y });
+}
+
+// Ova funkcija se koristi samo UNUTAR putanje!
+function nacrtajKrivu(x1, y1, x2, y2, x3, y3, x4, y4) {
+  if (putanjaAktivna) {
+    if (typeof x4 === "number" && typeof y4 === "number") {
+      // Kubna
+      putanjaKoraci.push({ tip: "kubna", x1, y1, x2, y2, x3, y3, x4, y4 });
+    } else {
+      // Kvadratna
+      putanjaKoraci.push({ tip: "kvadratna", x1, y1, x2, y2, x3, y3 });
+    }
+    return;
+  }
+  // Ako nije deo putanje, crtaj kao do sada:
+  ctx.beginPath();
+  const [startX, startY] = toCanvasCoords(x1, y1);
+  ctx.moveTo(startX, startY);
+  ctx.lineWidth = penSize;
+  ctx.strokeStyle = penColor;
+  if (typeof x4 === "number" && typeof y4 === "number") {
+    const [cp1x, cp1y] = toCanvasCoords(x2, y2);
+    const [cp2x, cp2y] = toCanvasCoords(x3, y3);
+    const [endX, endY] = toCanvasCoords(x4, y4);
+    ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, endX, endY);
+  } else {
+    const [cpx, cpy] = toCanvasCoords(x2, y2);
+    const [endX, endY] = toCanvasCoords(x3, y3);
+    ctx.quadraticCurveTo(cpx, cpy, endX, endY);
+  }
+  ctx.stroke();
+}
+
+function zavrsiPutanju() {
+  if (!putanjaAktivna || putanjaKoraci.length < 2) {
+    alert("Putanja mora imati bar 2 koraka!");
+    putanjaKoraci = [];
+    putanjaAktivna = false;
+    return;
+  }
+  ctx.beginPath();
+  let prvi = true;
+  let poslednjaTacka = null;
+  for (let korak of putanjaKoraci) {
+    if (korak.tip === "linija") {
+      const [cx, cy] = toCanvasCoords(korak.x, korak.y);
+      if (prvi) {
+        ctx.moveTo(cx, cy);
+        poslednjaTacka = [cx, cy];
+        prvi = false;
+      } else {
+        ctx.lineTo(cx, cy);
+        poslednjaTacka = [cx, cy];
+      }
+    } else if (korak.tip === "kvadratna") {
+      const [startX, startY] = toCanvasCoords(korak.x1, korak.y1);
+      const [cpx, cpy] = toCanvasCoords(korak.x2, korak.y2);
+      const [endX, endY] = toCanvasCoords(korak.x3, korak.y3);
+      if (prvi) {
+        ctx.moveTo(startX, startY);
+        prvi = false;
+      }
+      ctx.quadraticCurveTo(cpx, cpy, endX, endY);
+      poslednjaTacka = [endX, endY];
+    } else if (korak.tip === "kubna") {
+      const [startX, startY] = toCanvasCoords(korak.x1, korak.y1);
+      const [cp1x, cp1y] = toCanvasCoords(korak.x2, korak.y2);
+      const [cp2x, cp2y] = toCanvasCoords(korak.x3, korak.y3);
+      const [endX, endY] = toCanvasCoords(korak.x4, korak.y4);
+      if (prvi) {
+        ctx.moveTo(startX, startY);
+        prvi = false;
+      }
+      ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, endX, endY);
+      poslednjaTacka = [endX, endY];
+    }
+  }
+  ctx.closePath();
+  if (fillColor) {
+    ctx.fillStyle = fillColor;
+    ctx.fill();
+  }
+  if (penSize !== 0) {
+    ctx.lineWidth = penSize;
+    ctx.strokeStyle = penColor;
+    ctx.stroke();
+  }
+  putanjaKoraci = [];
+  putanjaAktivna = false;
 }

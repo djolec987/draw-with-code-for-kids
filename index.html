@@ -109,6 +109,29 @@
       <td>Iscrtava poligon sa zadatim temenima. Mora biti zadato bar 3 temena. Nakon crtanja temena se brišu.</td>
       <td>–</td>
     </tr>
+    <tr>
+      <td><b>zapocniPutanju()</b></td>
+      <td>Počinje definisanje nove putanje (kombinacija linija i krivih). Briše prethodne korake putanje.</td>
+      <td>–</td>
+    </tr>
+    <tr>
+      <td><b>dodajTemePutanje(x, y)</b></td>
+      <td>Dodaje pravo teme (x, y) trenutnoj putanji (prava linija do te tačke).</td>
+      <td>x, y – koordinate</td>
+    </tr>
+    <tr>
+      <td><b>nacrtajKrivu(...)</b></td>
+      <td>Dodaje Bezierovu krivu trenutnoj putanji (ako je putanja aktivna) ili crta samostalnu krivu.</td>
+      <td>
+        Kvadratna: x1, y1, x2, y2, x3, y3<br>
+        Kubna: x1, y1, x2, y2, x3, y3, x4, y4
+      </td>
+    </tr>
+    <tr>
+      <td><b>zavrsiPutanju()</b></td>
+      <td>Zatvara i iscrtava putanju (kombinacija linija i krivih). Popunjava ako je postavljena boja popune.</td>
+      <td>–</td>
+    </tr>
   </table>
 </div>
 
