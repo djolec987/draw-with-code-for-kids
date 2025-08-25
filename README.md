@@ -34,6 +34,9 @@ Umesto da koriste miš, deca pišu jednostavne naredbe na srpskom jeziku (latini
 - `nacrtajElipsu(x, y, a, b)` – crta elipsu centriranu u `(x,y)`, koja dodiruje sredine stranica pravougaonika dimenzija `a` i `b`. 
 - `postaviBojuPopune(r, g, b)` – postavlja boju popune za sledeće oblike (pravougaonik, krug, elipsa).
 - `bezPopune()` – isključuje popunjavanje oblika (oblici će biti samo iscrtani linijom).
+- `resetujPodesavanjaPlatna()` – vraća koordinatni sistem i trenutnu poziciju olovke na početne vrednosti.
+- `resetujPodesavanjaAlata()` – vraća boju olovke, debljinu i boju popune na podrazumevane vrednosti.
+- `resetujSvaPodesavanja()` – resetuje sva podešavanja platna i alata na podrazumevane vrednosti.
 
 ---
 
@@ -48,14 +51,24 @@ Umesto da koriste miš, deca pišu jednostavne naredbe na srpskom jeziku (latini
 ## 🧒 Primer korišćenja
 
 ```javascript
-postaviBoju(255, 0, 0);   // crvena boja
-postaviDebljinu(3);       // debljina linije
-pomeriNa(50, 50);
-linijaDo(200, 50);
-postaviBojuPopune(0, 255, 0); // zelena popuna
-nacrtajKrug(150, 150, 40);
+postaviBoju(0, 0, 0);
+postaviBojuPopune(255, 220, 40);
+nacrtajKrug(300, 200, 120);
+
+postaviBojuPopune(255, 255, 255);
+nacrtajKrug(255, 240, 20);
+nacrtajKrug(345, 240, 20);
+
+postaviBojuPopune(0, 0, 0);
+nacrtajKrug(260, 245, 7);
+nacrtajKrug(350, 245, 7);
+
 bezPopune();
-nacrtajPravougaonik(100, 100, 60, 40);
-postaviBojuPopune(0, 0, 255); // plava popuna
-nacrtajElipsu(300, 150, 100, 60); // elipsa centrirana u (300,150)
+postaviBoju(180, 80, 0);
+postaviDebljinu(6);
+pomeriNa(250, 160);
+linijaDo(270, 145);
+linijaDo(300, 140);
+linijaDo(330, 145);
+linijaDo(350, 160);
 ```

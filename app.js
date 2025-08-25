@@ -123,20 +123,28 @@ function nacrtajRaster() {
 }
 
 // --- Reset settings ---
-function resetujPodesavanja() {
-  penColor = "black";
-  penSize = 2;
-  fillColor = null;
+function resetujPodesavanjaPlatna() {
   originX = 0;
   originY = canvas.height;
   currentX = 0;
   currentY = 0;
 }
 
+function resetujPodesavanjaAlata() {
+  penColor = "black";
+  penSize = 2;
+  fillColor = null;
+}
+
+function resetujSvaPodesavanja() {
+  resetujPodesavanjaPlatna();
+  resetujPodesavanjaAlata();
+}
+
 // --- Run code from textarea ---
 document.getElementById("runButton").addEventListener("click", () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  resetujPodesavanja(); // Reset svih podešavanja
+  resetujSvaPodesavanja(); // Reset svih podešavanja
   nacrtajRaster();
   try {
     const code = document.getElementById("codeInput").value;
@@ -190,5 +198,35 @@ function drawCoordinateLabels() {
   }
 }
 
+function drawSmiley() {
+  document.getElementById("codeInput").value = `// Primer koda za crtanje smeška
+  
+postaviBoju(0, 0, 0);
+postaviBojuPopune(255, 220, 40);
+nacrtajKrug(300, 200, 120);
+
+postaviBojuPopune(255, 255, 255);
+nacrtajKrug(255, 240, 20);
+nacrtajKrug(345, 240, 20);
+
+postaviBojuPopune(0, 0, 0);
+nacrtajKrug(260, 245, 7);
+nacrtajKrug(350, 245, 7);
+
+bezPopune();
+postaviBoju(180, 80, 0);
+postaviDebljinu(6);
+pomeriNa(250, 160);
+linijaDo(270, 145);
+linijaDo(300, 140);
+linijaDo(330, 145);
+linijaDo(350, 160);
+  `;
+
+  const code = document.getElementById("codeInput").value;
+  eval(code); // execute user code (safe for local learning use)
+}
+
 // draw grid on load
 nacrtajRaster();
+drawSmiley();
