@@ -64,7 +64,8 @@ Umesto da koriste miš, deca pišu jednostavne naredbe na srpskom jeziku (latini
 ## 🧒 Primer korišćenja
 
 ```javascript
-postaviBoju(0, 0, 0);
+// Primer koda za crtanje smeška
+postaviBojuOlovke(0, 0, 0);
 postaviBojuPopune(255, 220, 40);
 nacrtajKrug(300, 200, 120);
 
@@ -77,11 +78,7 @@ nacrtajKrug(260, 245, 7);
 nacrtajKrug(350, 245, 7);
 
 bezPopune();
-postaviBoju(180, 80, 0);
-postaviDebljinu(6);
-pomeriNa(250, 160);
-linijaDo(270, 145);
-linijaDo(300, 140);
-linijaDo(330, 145);
-linijaDo(350, 160);
+postaviBojuOlovke(180, 80, 0);
+postaviDebljinuOlovke(6);
+nacrtajKrivu(250,160,300,125,350,160)
 ```
