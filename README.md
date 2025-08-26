@@ -50,6 +50,7 @@ Umesto da koriste miš, deca pišu jednostavne naredbe na srpskom jeziku (latini
   Kubna: `nacrtajKrivu(x1, y1, x2, y2, x3, y3, x4, y4)`
 - `zavrsiPutanju()` – zatvara i iscrtava putanju (kombinacija linija i krivih). Popunjava
 - `nacrtajTacku(x, y)` – crta tačku u zadatoj tački. Veličina tačke odgovara debljini
+- `nacrtajLuk(x, y, r, ugaoOd, ugaoDo)` – crta luk (deo kruga) sa centrom u (x, y), poluprečnikom r, od ugla ugaoOd do ugaoDo (u stepenima, 0 je desno, 90 je gore).
 
 ---
 

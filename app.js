@@ -317,6 +317,34 @@ function nacrtajKrivu(x1, y1, x2, y2, x3, y3, x4, y4) {
   ctx.stroke();
 }
 
+function nacrtajLuk(x, y, r, ugaoOd, ugaoDo) {
+  if (putanjaAktivna) {
+    // Dodaj kao deo putanje
+    putanjaKoraci.push({
+      tip: "luk",
+      x, y, r, ugaoOd, ugaoDo
+    });
+    return;
+  }
+  // Samostalno crtanje luka
+  const [cx, cy] = toCanvasCoords(x, y);
+  const radOd = (ugaoOd * Math.PI) / 180;
+  const radDo = (ugaoDo * Math.PI) / 180;
+  ctx.beginPath();
+  ctx.arc(cx, cy, r, -radOd, -radDo, true); // true za pozitivni smer (CCW)
+  if (fillColor) {
+    ctx.lineTo(cx, cy);
+    ctx.closePath();
+    ctx.fillStyle = fillColor;
+    ctx.fill();
+  }
+  if (penSize !== 0) {
+    ctx.lineWidth = penSize;
+    ctx.strokeStyle = penColor;
+    ctx.stroke();
+  }
+}
+
 function zavrsiPutanju() {
   if (!putanjaAktivna || putanjaKoraci.length < 2) {
     alert("Putanja mora imati bar 2 koraka!");
@@ -359,6 +387,23 @@ function zavrsiPutanju() {
       }
       ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, endX, endY);
       poslednjaTacka = [endX, endY];
+    } else if (korak.tip === "luk") {
+      const [cx, cy] = toCanvasCoords(korak.x, korak.y);
+      const radOd = (korak.ugaoOd * Math.PI) / 180;
+      const radDo = (korak.ugaoDo * Math.PI) / 180;
+      if (prvi) {
+        // Pomeri na početak luka
+        ctx.moveTo(
+          cx + korak.r * Math.cos(-radOd),
+          cy + korak.r * Math.sin(-radOd)
+        );
+        prvi = false;
+      }
+      ctx.arc(cx, cy, korak.r, -radOd, -radDo, true);
+      poslednjaTacka = [
+        cx + korak.r * Math.cos(-radDo),
+        cy + korak.r * Math.sin(-radDo)
+      ];
     }
   }
   ctx.closePath();
