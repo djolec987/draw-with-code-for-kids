@@ -251,7 +251,10 @@ function zavrsiPoligon() {
     return;
   }
   ctx.beginPath();
-  const [startX, startY] = toCanvasCoords(poligonTemena[0][0], poligonTemena[0][1]);
+  const [startX, startY] = toCanvasCoords(
+    poligonTemena[0][0],
+    poligonTemena[0][1]
+  );
   ctx.moveTo(startX, startY);
   for (let i = 1; i < poligonTemena.length; i++) {
     const [cx, cy] = toCanvasCoords(poligonTemena[i][0], poligonTemena[i][1]);
@@ -322,7 +325,11 @@ function nacrtajLuk(x, y, r, ugaoOd, ugaoDo) {
     // Dodaj kao deo putanje
     putanjaKoraci.push({
       tip: "luk",
-      x, y, r, ugaoOd, ugaoDo
+      x,
+      y,
+      r,
+      ugaoOd,
+      ugaoDo,
     });
     return;
   }
@@ -402,7 +409,7 @@ function zavrsiPutanju() {
       ctx.arc(cx, cy, korak.r, -radOd, -radDo, true);
       poslednjaTacka = [
         cx + korak.r * Math.cos(-radDo),
-        cy + korak.r * Math.sin(-radDo)
+        cy + korak.r * Math.sin(-radDo),
       ];
     }
   }
@@ -431,4 +438,3 @@ function nacrtajTacku(x, y) {
 // draw grid on load
 nacrtajRaster();
 drawSmiley();
-

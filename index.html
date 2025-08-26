@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="sr">
+
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Aplikacija za crtanje kodom</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
   <!-- Navigacioni meni -->
   <nav>
@@ -19,11 +21,27 @@
 
   <h1>Aplikacija za crtanje kodom</h1>
   <div id="app">
-    <div style="display: flex; flex-direction: row; align-items: flex-start;">
-      <div id="yLabels" style="display: flex; flex-direction: column; justify-content: flex-end; height: 400px; min-width: 28px; font-size: 10px; color: #333; text-align: right;"></div>
-      <div style="display: flex; flex-direction: column;">
+    <div style="display: flex; flex-direction: row; align-items: flex-start">
+      <div id="yLabels" style="
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            height: 400px;
+            min-width: 28px;
+            font-size: 10px;
+            color: #333;
+            text-align: right;
+          "></div>
+      <div style="display: flex; flex-direction: column">
         <canvas id="drawingCanvas" width="600" height="400"></canvas>
-        <div id="xLabels" style="height: 16px; display: flex; flex-direction: row; font-size: 10px; color: #333; width: 600px;"></div>
+        <div id="xLabels" style="
+              height: 16px;
+              display: flex;
+              flex-direction: row;
+              font-size: 10px;
+              color: #333;
+              width: 600px;
+            "></div>
       </div>
     </div>
     <div id="controls">
@@ -63,12 +81,12 @@
       <tr>
         <td><b>nacrtajPravougaonik(x, y, a, b)</b></td>
         <td>Crta pravougaonik centriran u tački (x, y).</td>
-        <td>x, y – centar<br>a – širina<br>b – visina</td>
+        <td>x, y – centar<br />a – širina<br />b – visina</td>
       </tr>
       <tr>
         <td><b>nacrtajKrug(x, y, r)</b></td>
         <td>Crta krug centriran u tački (x, y).</td>
-        <td>x, y – centar<br>r – poluprečnik</td>
+        <td>x, y – centar<br />r – poluprečnik</td>
       </tr>
       <tr>
         <td><b>postaviPocetak(x, y)</b></td>
@@ -77,37 +95,45 @@
       </tr>
       <tr>
         <td><b>nacrtajElipsu(x, y, a, b)</b></td>
-        <td>Crta elipsu centriranu u (x, y), koja dodiruje sredine stranica zamišljenog pravougaonika dimenzija a x b.</td>
-        <td>x, y – centar<br>a – širina pravougaonika<br>b – visina pravougaonika</td>
+        <td>Crta elipsu centriranu u (x, y), koja dodiruje sredine stranica zamišljenog pravougaonika dimenzija a x b.
+        </td>
+        <td>x, y – centar<br />a – širina pravougaonika<br />b – visina pravougaonika
+        </td>
       </tr>
       <tr>
         <td><b>postaviBojuPopune(r, g, b)</b></td>
-        <td>Postavlja boju popune za sledeće oblike (pravougaonik, krug, elipsa).</td>
+        <td>Postavlja boju popune za sledeće oblike (pravougaonik, krug, elipsa).
+        </td>
         <td>r, g, b – vrednosti boje (0–255)</td>
       </tr>
       <tr>
         <td><b>bezPopune()</b></td>
-        <td>Isključuje popunjavanje oblika (oblici će biti samo iscrtani linijom).</td>
+        <td>Isključuje popunjavanje oblika (oblici će biti samo iscrtani linijom).
+        </td>
         <td>–</td>
       </tr>
       <tr>
         <td><b>resetujPodesavanjaPlatna()</b></td>
-        <td>Vraća koordinatni sistem i trenutnu poziciju olovke na početne vrednosti.</td>
+        <td>Vraća koordinatni sistem i trenutnu poziciju olovke na početne vrednosti.
+        </td>
         <td>–</td>
       </tr>
       <tr>
         <td><b>resetujPodesavanjaAlata()</b></td>
-        <td>Vraća boju olovke, debljinu i boju popune na podrazumevane vrednosti.</td>
+        <td>Vraća boju olovke, debljinu i boju popune na podrazumevane vrednosti.
+        </td>
         <td>–</td>
       </tr>
       <tr>
         <td><b>resetujSvaPodesavanja()</b></td>
-        <td>Resetuje sva podešavanja platna i alata na podrazumevane vrednosti.</td>
+        <td>Resetuje sva podešavanja platna i alata na podrazumevane vrednosti.
+        </td>
         <td>–</td>
       </tr>
       <tr>
         <td><b>zapocniPoligon()</b></td>
-        <td>Počinje definisanje novog poligona i briše prethodno postavljena temena.</td>
+        <td>Počinje definisanje novog poligona i briše prethodno postavljena temena.
+        </td>
         <td>–</td>
       </tr>
       <tr>
@@ -117,45 +143,52 @@
       </tr>
       <tr>
         <td><b>zavrsiPoligon()</b></td>
-        <td>Iscrtava poligon sa zadatim temenima. Mora biti zadato bar 3 temena. Nakon crtanja temena se brišu.</td>
+        <td>Iscrtava poligon sa zadatim temenima. Mora biti zadato bar 3 temena. Nakon crtanja temena se brišu.
+        </td>
         <td>–</td>
       </tr>
       <tr>
         <td><b>zapocniPutanju()</b></td>
-        <td>Počinje definisanje nove putanje (kombinacija linija i krivih). Briše prethodne korake putanje.</td>
+        <td>Počinje definisanje nove putanje (kombinacija linija i krivih). Briše prethodne korake putanje.
+        </td>
         <td>–</td>
       </tr>
       <tr>
         <td><b>dodajTemePutanje(x, y)</b></td>
-        <td>Dodaje pravo teme (x, y) trenutnoj putanji (prava linija do te tačke).</td>
+        <td>Dodaje pravo teme (x, y) trenutnoj putanji (prava linija do te tačke).
+        </td>
         <td>x, y – koordinate</td>
       </tr>
       <tr>
         <td><b>nacrtajKrivu(...)</b></td>
-        <td>Dodaje Bezierovu krivu trenutnoj putanji (ako je putanja aktivna) ili crta samostalnu krivu.</td>
-        <td>
-          Kvadratna: x1, y1, x2, y2, x3, y3<br>
-          Kubna: x1, y1, x2, y2, x3, y3, x4, y4
+        <td>Dodaje Bezierovu krivu trenutnoj putanji (ako je putanja aktivna) ili crta samostalnu krivu.
+        </td>
+        <td>Kvadratna: x1, y1, x2, y2, x3, y3<br />Kubna: x1, y1, x2, y2, x3, y3, x4, y4
+        </td>
+      </tr>
+      <tr>
+        <td><b>nacrtajLuk(x, y, r, ugaoOd, ugaoDo)</b></td>
+        <td>Crta luk (deo kruga) sa centrom u (x, y), poluprečnikom r, od ugla <i>ugaoOd</i> do <i>ugaoDo</i> (u stepenima, 0 je desno, 90 je gore).
+        </td>
+        <td>x, y – centar<br />r – poluprečnik<br />ugaoOd, ugaoDo – uglovi u stepenima
         </td>
       </tr>
       <tr>
         <td><b>zavrsiPutanju()</b></td>
-        <td>Zatvara i iscrtava putanju (kombinacija linija i krivih). Popunjava ako je postavljena boja popune.</td>
+        <td>Zatvara i iscrtava putanju (kombinacija linija i krivih). Popunjava ako je postavljena boja popune.
+        </td>
         <td>–</td>
       </tr>
       <tr>
         <td><b>nacrtajTacku(x, y)</b></td>
-        <td>Crta tačku u zadatoj tački. Veličina tačke odgovara debljini olovke.</td>
+        <td>Crta tačku u zadatoj tački. Veličina tačke odgovara debljini olovke.
+        </td>
         <td>x, y – koordinate</td>
-      </tr>
-      <tr>
-        <td><b>nacrtajLuk(x, y, r, ugaoOd, ugaoDo)</b></td>
-        <td>Crta luk (deo kruga) sa centrom u (x, y), poluprečnikom r, od ugla <i>ugaoOd</i> do <i>ugaoDo</i> (u stepenima, 0 je desno, 90 je gore).</td>
-        <td>x, y – centar<br>r – poluprečnik<br>ugaoOd, ugaoDo – uglovi u stepenima</td>
       </tr>
     </table>
   </div>
 
   <script src="app.js"></script>
 </body>
+
 </html>
