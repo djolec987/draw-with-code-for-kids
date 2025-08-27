@@ -446,15 +446,15 @@ function prikaziInfo() {
   let x = Math.round((currentX - originX));
   let y = Math.round((originY - currentY));
   document.getElementById("info-pozicija").textContent =
-    `Pozicija tačke: x: ${x}, y: ${y}`;
+    `Pozicija tačke: ${x}, ${y}`;
 
   // Prikaz boje popune
   document.getElementById("info-popuna").textContent =
-    `Boja popune: rgb: ${fillColor ? fillColor.match(/\d+,\d+,\d+/) : "-"}`;
+    `Boja popune: ${fillColor ? fillColor.match(/\d+,\d+,\d+/) : "-"}`;
 
   // Prikaz boje olovke
   document.getElementById("info-olovka").textContent =
-    `Boja olovke: rgb: ${penColor.match(/\d+,\d+,\d+/) || "0,0,0"}`;
+    `Boja olovke: ${penColor.match(/\d+,\d+,\d+/) || "0,0,0"}`;
 
   // Prikaz debljine olovke
   document.getElementById("info-debljina").textContent =

@@ -15,11 +15,16 @@
       <li><a href="o-aplikaciji.html">O Aplikaciji</a></li>
       <li><a href="kako-radi.html">Kako radi</a></li>
       <li><a href="nauci-vise.html">Nauči više</a></li>
-      <li><a href="index.html">Dokumentacija funkcija</a></li>
+      <li><a href="index.html#docsTitle">Dokumentacija funkcija</a></li>
     </ul>
   </nav>
 
-  <h1>Aplikacija za crtanje kodom</h1>
+  <h1 style="text-align:center; color:#0074d9; letter-spacing:1px; margin: 0.7em 0 0.5em 0; font-size:2.2em;">
+    <span class="emoji" style="margin-right: 14px;">🎨</span>
+    Crtanje KODOM
+    <span class="emoji" style="margin-left: 14px;">💻</span>
+  </h1>
+
   <div id="app">
     <div style="display: flex; flex-direction: row; align-items: flex-start">
       <div id="yLabels" style="
@@ -59,12 +64,15 @@
       </div>
       <div id="controls">
         <textarea id="codeInput" placeholder="Ovde upiši svoje naredbe..." spellcheck="false"></textarea>
-        <button id="runButton">Pokreni kod</button>
+        <button id="runButton" class="run-btn">Pokreni kod</button>
       </div>
     </div>
   </div>
 
-  <h2>Dokumentacija funkcija</h2>
+  <h2 style="text-align:center; color:#0074d9; letter-spacing:1px; margin: 2.2em 0 0.7em 0; font-size:1.5em;">
+    <span id="docsTitle" class="emoji" style="margin-right: 10px;">📖</span>
+    Dokumentacija funkcija
+  </h2>
   <div id="docs">
     <table>
       <tr>
@@ -202,7 +210,6 @@
       </tr>
     </table>
   </div>
-
   <script src="app.js"></script>
 </body>
 
