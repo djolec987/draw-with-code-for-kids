@@ -230,7 +230,7 @@ postaviBojuOlovke(180, 80, 0);
 postaviDebljinuOlovke(6);
 nacrtajKrivu(250,160,300,125,350,160)
   `;
-
+  resetujSvaPodesavanja();
   const code = document.getElementById("codeInput").value;
   eval(code); // execute user code (safe for local learning use)
 }
@@ -461,19 +461,70 @@ function prikaziInfo() {
     `Debljina olovke: ${penSize}`;
 }
 
-// Izmeni event za "Pokreni kod":
+// Funkcija za crtanje praznog canvasa
+function crtajPrazno() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  resetujSvaPodesavanja();
+  nacrtajRaster();
+  document.getElementById("codeInput").value = "";
+  prikaziInfo();
+}
+
+// Funkcija za inicijalno učitavanje
+function inicijalizujCanvas() {
+  nacrtajRaster();
+  const saved = localStorage.getItem("savedDrawingCode");
+  if (saved === null) {
+    // Pravo prazno stanje: crtaj smajli
+    drawSmiley();
+  } else if (saved === "") {
+    // Lažno prazno stanje: prazan canvas
+    crtajPrazno();
+  } else {
+    // Ima koda: iscrtaj ga
+    document.getElementById("codeInput").value = saved;
+    try {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      resetujSvaPodesavanja();
+      nacrtajRaster();
+      eval(saved);
+    } catch (err) {
+      drawSmiley();
+    }
+    prikaziInfo();
+  }
+}
+
+// Pokreni kod i upiši u localStorage samo ako je kod ispravan
 document.getElementById("runButton").addEventListener("click", () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  resetujSvaPodesavanja(); // Reset svih podešavanja
+  resetujSvaPodesavanja();
   nacrtajRaster();
   try {
     const code = document.getElementById("codeInput").value;
-    eval(code); // execute user code (safe for local learning use)
+    eval(code);
+    localStorage.setItem("savedDrawingCode", code); // upiši samo ako je prošlo
   } catch (err) {
     alert("Greška u kodu: " + err.message);
   }
   prikaziInfo();
 });
+
+// Resetuj: obriši localStorage (NULL) i nacrtaj smajli
+document.getElementById("resetButton").addEventListener("click", () => {
+  localStorage.removeItem("savedDrawingCode");
+  drawSmiley();
+  prikaziInfo();
+});
+
+// Obriši: postavi localStorage na "" i prazan canvas
+document.getElementById("clearButton").addEventListener("click", () => {
+  localStorage.setItem("savedDrawingCode", "");
+  crtajPrazno();
+});
+
+// Prilikom učitavanja stranice
+window.addEventListener("DOMContentLoaded", inicijalizujCanvas);
 
 // Sačuvaj crtež u fajl
 document.getElementById("saveDrawingBtn").addEventListener("click", () => {

@@ -305,7 +305,7 @@ button {
   font-size: 1em;
   color: #0074d9;
   font-weight: bold;
-  box-shadow: 0 1px 6px rgba(0,116,217,0.07);
+  box-shadow: 0 1px 6px rgba(0, 116, 217, 0.07);
   transition: border 0.2s, box-shadow 0.2s;
 }
 
@@ -324,14 +324,14 @@ button {
   color: #fff;
   margin-right: 12px;
   margin-bottom: 6px;
-  box-shadow: 0 2px 8px rgba(0,116,217,0.10);
+  box-shadow: 0 2px 8px rgba(0, 116, 217, 0.10);
   cursor: pointer;
   transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
 }
 
 #canvas-info button:hover {
   background-color: #005fa3;
-  box-shadow: 0 4px 16px rgba(0,116,217,0.18);
+  box-shadow: 0 4px 16px rgba(0, 116, 217, 0.18);
   transform: translateY(-2px) scale(1.03);
   outline: none;
 }
@@ -357,4 +357,30 @@ button {
   box-shadow: 0 4px 16px rgba(30, 201, 107, 0.18);
   transform: translateY(-2px) scale(1.03);
   outline: none;
+}
+
+#resetButtons button {
+  padding: 10px 22px;
+  font-size: 1.08em;
+  font-weight: bold;
+  border-radius: 8px;
+  border: none;
+  background-color: #eb4301;
+  color: #fff;
+  margin-right: 12px;
+  margin-bottom: 6px;
+  box-shadow: 0 2px 8px rgba(0, 116, 217, 0.10);
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+}
+
+#resetButtons button:hover {
+  background-color: #b43402;
+  box-shadow: 0 4px 16px rgba(0, 116, 217, 0.18);
+  transform: translateY(-2px) scale(1.03);
+  outline: none;
+}
+
+.reset-btn {
+  flex-grow: 1;
 }
