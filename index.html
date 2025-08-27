@@ -26,14 +26,14 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            height: 400px;
+            height: 600px;
             min-width: 28px;
             font-size: 10px;
             color: #333;
             text-align: right;
           "></div>
       <div style="display: flex; flex-direction: column">
-        <canvas id="drawingCanvas" width="600" height="400"></canvas>
+        <canvas id="drawingCanvas" width="800" height="600"></canvas>
         <div id="xLabels" style="
               height: 16px;
               display: flex;
@@ -42,11 +42,25 @@
               color: #333;
               width: 600px;
             "></div>
+        <div id="canvas-info" style="margin-top: 18px; font-size: 1.08em; color: #234;">
+          <div id="info" style="display: flex; justify-content: space-between; font-size: 0.8rem; width: 100%;">
+            <div id="info-pozicija" class="info-holder" style="margin-right: 8px;">Pozicija tačke: x: 0, y: 0</div>
+            <div id="info-popuna" class="info-holder" style="margin-right: 8px;">Boja popune: rgb: -</div>
+            <div id="info-olovka" class="info-holder" style="margin-right: 8px;">Boja olovke: rgb: 0,0,0</div>
+            <div id="info-debljina" class="info-holder">Debljina olovke: 2</div>
+          </div>
+
+          <div style="margin-top: 14px;">
+            <button id="saveDrawingBtn">Sačuvaj crtež u fajl</button>
+            <input type="file" id="loadDrawingInput" style="display:none" accept=".txt" />
+            <button id="loadDrawingBtn">Učitaj crtež iz fajla</button>
+          </div>
+        </div>
       </div>
-    </div>
-    <div id="controls">
-      <textarea id="codeInput" placeholder="Ovde upiši svoje naredbe..." spellcheck="false"></textarea>
-      <button id="runButton">Pokreni kod</button>
+      <div id="controls">
+        <textarea id="codeInput" placeholder="Ovde upiši svoje naredbe..." spellcheck="false"></textarea>
+        <button id="runButton">Pokreni kod</button>
+      </div>
     </div>
   </div>
 
@@ -168,7 +182,8 @@
       </tr>
       <tr>
         <td><b>nacrtajLuk(x, y, r, ugaoOd, ugaoDo)</b></td>
-        <td>Crta luk (deo kruga) sa centrom u (x, y), poluprečnikom r, od ugla <i>ugaoOd</i> do <i>ugaoDo</i> (u stepenima, 0 je desno, 90 je gore).
+        <td>Crta luk (deo kruga) sa centrom u (x, y), poluprečnikom r, od ugla <i>ugaoOd</i> do <i>ugaoDo</i> (u
+          stepenima, 0 je desno, 90 je gore).
         </td>
         <td>x, y – centar<br />r – poluprečnik<br />ugaoOd, ugaoDo – uglovi u stepenima
         </td>

@@ -9,6 +9,7 @@ body {
 
 #app {
   display: flex;
+  flex-direction: column;
   gap: 20px;
 }
 
@@ -21,11 +22,12 @@ canvas {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  margin-left: 20px;
 }
 
 #codeInput {
-  width: 300px;
-  height: 400px;
+  width: 400px;
+  height: 600px;
   font-family: monospace;
   padding: 10px;
 }
@@ -265,4 +267,12 @@ button {
   margin: 18px 0;
   font-size: 1.1em;
   font-style: italic;
+}
+
+.info-holder {
+  margin-right: 8px;
+  background-color: white;
+  border-radius: 8px;
+  border: 1px solid black;
+  padding: 4px 8px;
 }

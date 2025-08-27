@@ -163,6 +163,7 @@ document.getElementById("runButton").addEventListener("click", () => {
   } catch (err) {
     alert("Greška u kodu: " + err.message);
   }
+  prikaziInfo();
 });
 
 function drawCoordinateLabels() {
@@ -438,3 +439,68 @@ function nacrtajTacku(x, y) {
 // draw grid on load
 nacrtajRaster();
 drawSmiley();
+
+// Funkcija za prikaz informacija ispod canvasa
+function prikaziInfo() {
+  // Prikaz trenutne pozicije (u korisničkim koordinatama)
+  let x = Math.round((currentX - originX));
+  let y = Math.round((originY - currentY));
+  document.getElementById("info-pozicija").textContent =
+    `Pozicija tačke: x: ${x}, y: ${y}`;
+
+  // Prikaz boje popune
+  document.getElementById("info-popuna").textContent =
+    `Boja popune: rgb: ${fillColor ? fillColor.match(/\d+,\d+,\d+/) : "-"}`;
+
+  // Prikaz boje olovke
+  document.getElementById("info-olovka").textContent =
+    `Boja olovke: rgb: ${penColor.match(/\d+,\d+,\d+/) || "0,0,0"}`;
+
+  // Prikaz debljine olovke
+  document.getElementById("info-debljina").textContent =
+    `Debljina olovke: ${penSize}`;
+}
+
+// Izmeni event za "Pokreni kod":
+document.getElementById("runButton").addEventListener("click", () => {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  resetujSvaPodesavanja(); // Reset svih podešavanja
+  nacrtajRaster();
+  try {
+    const code = document.getElementById("codeInput").value;
+    eval(code); // execute user code (safe for local learning use)
+  } catch (err) {
+    alert("Greška u kodu: " + err.message);
+  }
+  prikaziInfo();
+});
+
+// Sačuvaj crtež u fajl
+document.getElementById("saveDrawingBtn").addEventListener("click", () => {
+  const code = document.getElementById("codeInput").value;
+  const datum = new Date();
+  const dd = String(datum.getDate()).padStart(2, '0');
+  const mm = String(datum.getMonth() + 1).padStart(2, '0');
+  const yyyy = datum.getFullYear();
+  const fileName = `crtez_${dd}${mm}${yyyy}.txt`;
+  const blob = new Blob([code], { type: "text/plain" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = fileName;
+  a.click();
+  URL.revokeObjectURL(a.href);
+});
+
+// Učitaj crtež iz fajla
+document.getElementById("loadDrawingBtn").addEventListener("click", () => {
+  document.getElementById("loadDrawingInput").click();
+});
+document.getElementById("loadDrawingInput").addEventListener("change", function (e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function (evt) {
+    document.getElementById("codeInput").value = evt.target.result;
+  };
+  reader.readAsText(file);
+});
