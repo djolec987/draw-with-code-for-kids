@@ -437,8 +437,8 @@ function nacrtajTacku(x, y) {
 }
 
 // draw grid on load
-nacrtajRaster();
-drawSmiley();
+nacrtajRaster();  
+//drawSmiley();
 
 // Funkcija za prikaz informacija ispod canvasa
 function prikaziInfo() {
