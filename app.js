@@ -161,7 +161,7 @@ document.getElementById("runButton").addEventListener("click", () => {
     const code = document.getElementById("codeInput").value;
     eval(code); // execute user code (safe for local learning use)
   } catch (err) {
-    alert("Greška u kodu: " + err.message);
+    prikaziDialog("Greška u kodu: " + err.message);
   }
   prikaziInfo();
 });
@@ -247,7 +247,7 @@ function dodajTeme(x, y) {
 
 function zavrsiPoligon() {
   if (poligonTemena.length < 3) {
-    alert("Poligon mora imati bar 3 temena!");
+    prikaziDialog("Poligon mora imati bar 3 temena!");
     poligonTemena = [];
     return;
   }
@@ -284,7 +284,7 @@ function zapocniFiguru() {
 
 function dodajTemeFigure(x, y) {
   if (!figuraAktivna) {
-    alert("Prvo pozovi zapocniFiguru()");
+    prikaziDialog("Prvo pozovi zapocniFiguru()");
     return;
   }
   figuraKoraci.push({ tip: "linija", x, y });
@@ -355,7 +355,7 @@ function nacrtajLuk(x, y, r, ugaoOd, ugaoDo) {
 
 function zavrsiFiguru() {
   if (!figuraAktivna || figuraKoraci.length < 2) {
-    alert("Figura mora imati bar 2 koraka!");
+    prikaziDialog("Figura mora imati bar 2 koraka!");
     figuraKoraci = [];
     figuraAktivna = false;
     return;
@@ -505,23 +505,59 @@ document.getElementById("runButton").addEventListener("click", () => {
     eval(code);
     localStorage.setItem("savedDrawingCode", code); // upiši samo ako je prošlo
   } catch (err) {
-    alert("Greška u kodu: " + err.message);
+    prikaziDialog("Greška u kodu: " + err.message);
   }
   prikaziInfo();
 });
 
-// Resetuj: obriši localStorage (NULL) i nacrtaj smajli
+// Modalni dijalog sa potvrdom
+function prikaziPotvrdu(poruka, onPotvrdi) {
+  const dialog = document.getElementById("dialog");
+  const msg = document.getElementById("dialog-message");
+  msg.textContent = poruka;
+
+  const box = dialog.querySelector(".dialog-box");
+
+  // OBRIŠI SVE DUGMIĆE (i divove) OSIM PORUKE
+  Array.from(box.children).forEach(child => {
+    if (child !== msg) child.remove();
+  });
+
+  // Dodaj dugmad
+  let btns = document.createElement("div");
+  btns.style.marginTop = "18px";
+  btns.innerHTML = `
+    <button id="potvrdiBtn" style="margin-right:12px;background:#1ec96b;">Da</button>
+    <button id="odustaniBtn" style="background:#e74c3c;">Ne</button>
+  `;
+  box.appendChild(btns);
+
+  dialog.style.display = "flex";
+
+  document.getElementById("potvrdiBtn").onclick = function() {
+    dialog.style.display = "none";
+    onPotvrdi();
+  };
+  document.getElementById("odustaniBtn").onclick = function() {
+    dialog.style.display = "none";
+  };
+}
+
+// Izmeni event za Resetuj:
 document.getElementById("resetButton").addEventListener("click", () => {
-  localStorage.removeItem("savedDrawingCode");
-  crtajPrazno();
-  drawSmiley();
-  prikaziInfo();
+  prikaziPotvrdu("Da li sigurno želiš da resetuješ sve i vratiš smajli?", () => {
+    localStorage.removeItem("savedDrawingCode");
+    drawSmiley();
+    prikaziInfo();
+  });
 });
 
-// Obriši: postavi localStorage na "" i prazan canvas
+// Izmeni event za Obrisi:
 document.getElementById("clearButton").addEventListener("click", () => {
-  localStorage.setItem("savedDrawingCode", "");
-  crtajPrazno();
+  prikaziPotvrdu("Da li sigurno želiš da obrišeš sve i ostaviš prazan canvas?", () => {
+    localStorage.setItem("savedDrawingCode", "");
+    crtajPrazno();
+  });
 });
 
 // Prilikom učitavanja stranice
@@ -556,3 +592,30 @@ document.getElementById("loadDrawingInput").addEventListener("change", function 
   };
   reader.readAsText(file);
 });
+
+// Dialog funkcije
+function prikaziDialog(poruka) {
+  const dialog = document.getElementById("dialog");
+  const msg = document.getElementById("dialog-message");
+  msg.textContent = poruka;
+
+  const box = dialog.querySelector(".dialog-box");
+
+  // OBRIŠI SVE DUGMIĆE (i divove) OSIM PORUKE
+  Array.from(box.children).forEach(child => {
+    if (child !== msg) child.remove();
+  });
+
+  // Dodaj samo OK dugme
+  let okBtn = document.createElement("button");
+  okBtn.textContent = "OK";
+  okBtn.onclick = zatvoriDialog;
+  okBtn.style.marginTop = "18px";
+  box.appendChild(okBtn);
+
+  dialog.style.display = "flex";
+}
+
+function zatvoriDialog() {
+  document.getElementById("dialog").style.display = "none";
+}
