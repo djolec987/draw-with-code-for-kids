@@ -22,8 +22,8 @@
     <li><a href="#" data-section="koordinatni-sistem" class="active">Koordinatni sistem</a></li>
     <li><a href="#" data-section="funkcije-parametri">Funkcije i parametri</a></li>
     <li><a href="#" data-section="osnovni-oblici">Osnovni oblici</a></li>
-    <li><a href="#" data-section="poligoni">Poligoni</a></li>
     <li><a href="#" data-section="krive">Krive</a></li>
+    <li><a href="#" data-section="poligoni">Poligoni</a></li>
     <li><a href="#" data-section="putanje">Putanje</a></li>
     <li><a href="#" data-section="boje">Boje</a></li>
   </ul>
@@ -166,21 +166,136 @@
         <span style="color:#0074d9; font-weight:bold;">Zabavna vežba:</span> Probaj da nacrtaš više oblika na platnu, promeniš im boje i veličine, i napraviš svoju sliku koristeći pravougaonike, krugove, elipse, tačke i linije!
       </p>
     </div>
-    <div class="lesson-box" id="lekcija-poligoni" style="display:none;">
-      <h2>Poligoni</h2>
-      <div class="placeholder">[Ovde ide lekcija o poligonima]</div>
-    </div>
     <div class="lesson-box" id="lekcija-krive" style="display:none;">
       <h2>Krive</h2>
-      <div class="placeholder">[Ovde ide lekcija o krivama]</div>
+      <p style="background:#fffbe6; border-left:4px solid #ffe066; padding:10px 14px; border-radius:8px; margin:18px 0;">
+        <b>Napomena:</b> Krive su napredniji koncept u programiranju crteža. Ako ti deluju komplikovano, slobodno ih preskoči i nastavi sa jednostavnijim oblicima! Važno je samo da znaš da postoje i da se koriste za crtanje glatkih, zakrivljenih linija.
+      </p>
+      <p>
+        <strong>Kriva</strong> je linija koja nije prava – može biti zakrivljena ili savijena. U ovoj aplikaciji koristiš Bezierove krive za crtanje glatkih zakrivljenih linija.
+      </p>
+      <div class="placeholder">
+        <img class="lesson-img" src="img/kriva.png" alt="Kriva na platnu">
+      </div>
+      <p>
+        Postoje dve vrste krivih:
+      </p>
+      <ul>
+        <li>
+          <b>Kvadratna kriva:</b><br>
+          <code>nacrtajKrivu(x1, y1, x2, y2, x3, y3)</code><br>
+          Prva tačka je početak, druga je kontrolna tačka (određuje zakrivljenost), treća je kraj krive.
+        </li>
+        <li>
+          <b>Kubna kriva:</b><br>
+          <code>nacrtajKrivu(x1, y1, x2, y2, x3, y3, x4, y4)</code><br>
+          Prva tačka je početak, sledeće dve su kontrolne tačke, poslednja je kraj krive.
+        </li>
+      </ul>
+      <p>
+        Krive možeš koristiti samostalno ili kao deo putanje. Debljinu i boju krive podešavaš kao i za linije.
+      </p>
+      <p>
+        <span style="color:#0074d9; font-weight:bold;">Zabavna vežba:</span> Nacrtaj više krivih i pokušaj da napraviš talasastu liniju ili zanimljiv oblik!
+      </p>
+    </div>
+    <div class="lesson-box" id="lekcija-poligoni" style="display:none;">
+      <h2>Poligoni</h2>
+      <p>
+        <strong>Poligon</strong> je zatvoreni oblik sastavljen od više pravih linija. Tačke u kojima se linije dodiruju se zovu <strong>temena</strong>. Najpoznatiji poligoni su trougao, kvadrat, petougao, itd. Da bi nacrtao poligon, moraš da navedeš sva njegova temena redom.
+      </p>
+      <div class="placeholder">
+        <img class="lesson-img" src="img/poligon.png" alt="Poligon na platnu">
+      </div>
+      <p>
+        Poligon crtaš pomoću sledećih funkcija:
+      </p>
+      <ul>
+        <li><code>zapocniPoligon()</code> – započinje novi poligon.</li>
+        <li><code>dodajTeme(x, y)</code> – dodaje teme (tačku) poligonu.</li>
+        <li><code>zavrsiPoligon()</code> – zatvara i iscrtava poligon.</li>
+      </ul>
+      <p>
+        Primer za crtanje trougla:
+        <br>
+        <code>
+          zapocniPoligon();<br>
+          dodajTeme(200, 200);<br>
+          dodajTeme(300, 300);<br>
+          dodajTeme(400, 200);<br>
+          zavrsiPoligon();
+        </code>
+      </p>
+      <p>
+        Poligon možeš popuniti bojom koristeći <code>postaviBojuPopune(r, g, b)</code> pre crtanja, ili nacrtati samo ivicu koristeći <code>bezPopune()</code>.
+      </p>
+      <p>
+        <span style="color:#0074d9; font-weight:bold;">Zabavna vežba:</span> Probaj da nacrtaš poligon sa više temena i napraviš zvezdu ili drugi zanimljiv oblik!
+      </p>
     </div>
     <div class="lesson-box" id="lekcija-putanje" style="display:none;">
       <h2>Putanje</h2>
-      <div class="placeholder">[Ovde ide lekcija o putanjama]</div>
+      <p>
+        <strong>Putanja</strong> je kombinacija linija i krivih koje zajedno čine složeniji oblik. Putanju možeš koristiti da nacrtaš oblike koji nisu samo poligoni ili krugovi, već i razne talasaste ili nepravilne figure.
+      </p>
+      <div class="placeholder">
+        <img class="lesson-img" src="img/putanja.png" alt="Putanja na platnu">
+      </div>
+      <p>
+        Putanju crtaš pomoću sledećih funkcija:
+      </p>
+      <ul>
+        <li><code>zapocniPutanju()</code> – započinje novu putanju.</li>
+        <li><code>dodajTemePutanje(x, y)</code> – dodaje pravo teme (pravu liniju do tačke).</li>
+        <li><code>nacrtajKrivu(...)</code> – dodaje krivu u putanju.</li>
+        <li><code>nacrtajLuk(x, y, r, ugaoOd, ugaoDo)</code> – dodaje luk u putanju.</li>
+        <li><code>zavrsiPutanju()</code> – zatvara i iscrtava putanju.</li>
+      </ul>
+      <p>
+        Putanju možeš popuniti bojom ili nacrtati samo njene ivice, kao i kod ostalih oblika.
+      </p>
+      <p>
+        <span style="color:#0074d9; font-weight:bold;">Zabavna vežba:</span> Kombinuj linije, krive i lukove u jednoj putanji i napravi svoj originalni oblik!
+      </p>
     </div>
     <div class="lesson-box" id="lekcija-boje" style="display:none;">
       <h2>Boje</h2>
-      <div class="placeholder">[Ovde ide lekcija o bojama]</div>
+      <p>
+        Boje čine tvoje crteže zanimljivijim i lepšim! Možeš da menjaš boju olovke (ivice) i boju popune (unutrašnjost oblika) pomoću posebnih funkcija.
+      </p>
+      <div class="placeholder">
+        <img class="lesson-img" src="img/boje.png" alt="Boje na platnu">
+      </div>
+      <p>
+        Da bi dobio različite boje, koristiš tri broja: <b>r</b> (crvena), <b>g</b> (zelena) i <b>b</b> (plava). Svaki broj može biti od 0 do 255. Kombinovanjem ovih brojeva dobijaš sve moguće boje! Na primer:
+        <ul>
+          <li><b>crvena</b>: r=255, g=0, b=0</li>
+          <li><b>zelena</b>: r=0, g=255, b=0</li>
+          <li><b>plava</b>: r=0, g=0, b=255</li>
+          <li><b>žuta</b>: r=255, g=255, b=0</li>
+          <li><b>ljubičasta</b>: r=128, g=0, b=128</li>
+          <li><b>crna</b>: r=0, g=0, b=0</li>
+          <li><b>bela</b>: r=255, g=255, b=255</li>
+        </ul>
+        Što više mešaš crvenu, zelenu i plavu, dobijaš nove boje – baš kao kada mešaš tempere!
+      </p>
+      <ul>
+        <li>
+          <b>Boja olovke:</b> <code>postaviBojuOlovke(r, g, b)</code><br>
+          Menja boju linije ili ivice.
+        </li>
+        <li>
+          <b>Boja popune:</b> <code>postaviBojuPopune(r, g, b)</code><br>
+          Menja boju unutrašnjosti oblika. Ako ne želiš popunu, koristi <code>bezPopune()</code>.
+        </li>
+        <li>
+          <b>Debljina olovke:</b> <code>postaviDebljinuOlovke(s)</code><br>
+          Menja debljinu linije (broj piksela).
+        </li>
+      </ul>
+      <p>
+        <span style="color:#0074d9; font-weight:bold;">Zabavna vežba:</span> Eksperimentiši sa različitim brojevima za r, g i b i vidi koje sve boje možeš da napraviš. Pokušaj da napraviš svoju omiljenu boju i koristi je u crtežu!
+      </p>
     </div>
   </div>
 
