@@ -359,6 +359,12 @@ button {
   outline: none;
 }
 
+#resetButtons {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}
+
 #resetButtons button {
   padding: 10px 22px;
   font-size: 1.08em;
@@ -367,7 +373,6 @@ button {
   border: none;
   background-color: #eb4301;
   color: #fff;
-  margin-right: 12px;
   margin-bottom: 6px;
   box-shadow: 0 2px 8px rgba(0, 116, 217, 0.10);
   cursor: pointer;
@@ -383,4 +388,5 @@ button {
 
 .reset-btn {
   flex-grow: 1;
+  margin: 0;
 }
