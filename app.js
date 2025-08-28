@@ -274,35 +274,35 @@ function zavrsiPoligon() {
   poligonTemena = [];
 }
 
-let putanjaKoraci = [];
-let putanjaAktivna = false;
+let figuraKoraci = [];
+let figuraAktivna = false;
 
-function zapocniPutanju() {
-  putanjaKoraci = [];
-  putanjaAktivna = true;
+function zapocniFiguru() {
+  figuraKoraci = [];
+  figuraAktivna = true;
 }
 
-function dodajTemePutanje(x, y) {
-  if (!putanjaAktivna) {
-    alert("Prvo pozovi zapocniPutanju()");
+function dodajTemeFigure(x, y) {
+  if (!figuraAktivna) {
+    alert("Prvo pozovi zapocniFiguru()");
     return;
   }
-  putanjaKoraci.push({ tip: "linija", x, y });
+  figuraKoraci.push({ tip: "linija", x, y });
 }
 
-// Ova funkcija se koristi samo UNUTAR putanje!
+// Ova funkcija se koristi samo UNUTAR figure!
 function nacrtajKrivu(x1, y1, x2, y2, x3, y3, x4, y4) {
-  if (putanjaAktivna) {
+  if (figuraAktivna) {
     if (typeof x4 === "number" && typeof y4 === "number") {
       // Kubna
-      putanjaKoraci.push({ tip: "kubna", x1, y1, x2, y2, x3, y3, x4, y4 });
+      figuraKoraci.push({ tip: "kubna", x1, y1, x2, y2, x3, y3, x4, y4 });
     } else {
       // Kvadratna
-      putanjaKoraci.push({ tip: "kvadratna", x1, y1, x2, y2, x3, y3 });
+      figuraKoraci.push({ tip: "kvadratna", x1, y1, x2, y2, x3, y3 });
     }
     return;
   }
-  // Ako nije deo putanje, crtaj kao do sada:
+  // Ako nije deo figure, crtaj kao do sada:
   ctx.beginPath();
   const [startX, startY] = toCanvasCoords(x1, y1);
   ctx.moveTo(startX, startY);
@@ -322,9 +322,9 @@ function nacrtajKrivu(x1, y1, x2, y2, x3, y3, x4, y4) {
 }
 
 function nacrtajLuk(x, y, r, ugaoOd, ugaoDo) {
-  if (putanjaAktivna) {
-    // Dodaj kao deo putanje
-    putanjaKoraci.push({
+  if (figuraAktivna) {
+    // Dodaj kao deo figure
+    figuraKoraci.push({
       tip: "luk",
       x,
       y,
@@ -353,17 +353,17 @@ function nacrtajLuk(x, y, r, ugaoOd, ugaoDo) {
   }
 }
 
-function zavrsiPutanju() {
-  if (!putanjaAktivna || putanjaKoraci.length < 2) {
-    alert("Putanja mora imati bar 2 koraka!");
-    putanjaKoraci = [];
-    putanjaAktivna = false;
+function zavrsiFiguru() {
+  if (!figuraAktivna || figuraKoraci.length < 2) {
+    alert("Figura mora imati bar 2 koraka!");
+    figuraKoraci = [];
+    figuraAktivna = false;
     return;
   }
   ctx.beginPath();
   let prvi = true;
   let poslednjaTacka = null;
-  for (let korak of putanjaKoraci) {
+  for (let korak of figuraKoraci) {
     if (korak.tip === "linija") {
       const [cx, cy] = toCanvasCoords(korak.x, korak.y);
       if (prvi) {
@@ -424,8 +424,8 @@ function zavrsiPutanju() {
     ctx.strokeStyle = penColor;
     ctx.stroke();
   }
-  putanjaKoraci = [];
-  putanjaAktivna = false;
+  figuraKoraci = [];
+  figuraAktivna = false;
 }
 
 function nacrtajTacku(x, y) {

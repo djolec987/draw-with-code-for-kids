@@ -24,7 +24,7 @@
     <li><a href="#" data-section="osnovni-oblici">Osnovni oblici</a></li>
     <li><a href="#" data-section="krive">Krive</a></li>
     <li><a href="#" data-section="poligoni">Poligoni</a></li>
-    <li><a href="#" data-section="putanje">Putanje</a></li>
+    <li><a href="#" data-section="figure">Figure</a></li>
     <li><a href="#" data-section="boje">Boje</a></li>
   </ul>
 
@@ -297,6 +297,31 @@
         <span style="color:#0074d9; font-weight:bold;">Zabavna vežba:</span> Eksperimentiši sa različitim brojevima za r, g i b i vidi koje sve boje možeš da napraviš. Pokušaj da napraviš svoju omiljenu boju i koristi je u crtežu!
       </p>
     </div>
+    <div class="lesson-box" id="lekcija-figure" style="display:none;">
+      <h2>Figure</h2>
+      <p>
+        <strong>Figura</strong> je složen zatvoreni oblik koji može da se sastoji od pravih linija, krivih i lukova. Figure ti omogućavaju da nacrtaš originalne i zanimljive oblike koji nisu samo poligoni ili osnovni oblici.
+      </p>
+      <div class="placeholder">
+        <img class="lesson-img" src="img/figura.png" alt="Figura na platnu">
+      </div>
+      <p>
+        Figuru crtaš pomoću sledećih funkcija:
+      </p>
+      <ul>
+        <li><code>zapocniFiguru()</code> – započinje novu figuru.</li>
+        <li><code>dodajTemeFigure(x, y)</code> – dodaje pravo teme (pravu liniju do tačke).</li>
+        <li><code>nacrtajKrivu(...)</code> – dodaje krivu u figuru.</li>
+        <li><code>nacrtajLuk(x, y, r, ugaoOd, ugaoDo)</code> – dodaje luk u figuru.</li>
+        <li><code>zavrsiFiguru()</code> – zatvara i iscrtava figuru.</li>
+      </ul>
+      <p>
+        Figuru možeš popuniti bojom ili nacrtati samo njene ivice, kao i kod ostalih oblika.
+      </p>
+      <p>
+        <span style="color:#0074d9; font-weight:bold;">Zabavna vežba:</span> Kombinuj linije, krive i lukove u jednoj figuri i napravi svoj originalni oblik!
+      </p>
+    </div>
   </div>
 
   <script>
@@ -308,7 +333,7 @@
       "osnovni-oblici": document.getElementById("lekcija-osnovni-oblici"),
       "poligoni": document.getElementById("lekcija-poligoni"),
       "krive": document.getElementById("lekcija-krive"),
-      "putanje": document.getElementById("lekcija-putanje"),
+      "figure": document.getElementById("lekcija-figure"),
       "boje": document.getElementById("lekcija-boje"),
     };
 

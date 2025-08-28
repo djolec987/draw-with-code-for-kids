@@ -43,12 +43,12 @@ Umesto da koriste miš, deca pišu jednostavne naredbe na srpskom jeziku (latini
 - `zapocniPoligon()` – počinje definisanje novog poligona i briše prethodno postavljena temena.
 - `dodajTeme(x, y)` – dodaje teme (x, y) trenutnom poligonu.
 - `zavrsiPoligon()` – iscrtava poligon sa zadatim temenima (mora biti bar 3 temena). Nakon crtanja temena se brišu.
-- `zapocniPutanju()` – počinje definisanje nove putanje (kombinacija linija i krivih). Briše prethodne korake putanje.
-- `dodajTemePutanje(x, y)` – dodaje pravo teme (x, y) trenutnoj putanji (prava linija do te tačke).
-- `nacrtajKrivu(...)` – dodaje Bezierovu krivu trenutnoj putanji (ako je putanja aktivna) ili crta samostalnu krivu.<br>
+- `zapocniFiguru()` – počinje definisanje nove figure (kombinacija linija i krivih). Briše prethodne korake figure.
+- `dodajTemeFigure(x, y)` – dodaje pravo teme (x, y) trenutnoj figuri (prava linija do te tačke).
+- `nacrtajKrivu(...)` – dodaje Bezierovu krivu trenutnoj figuri (ako je figura aktivna) ili crta samostalnu krivu.<br>
   Kvadratna: `nacrtajKrivu(x1, y1, x2, y2, x3, y3)`<br>
   Kubna: `nacrtajKrivu(x1, y1, x2, y2, x3, y3, x4, y4)`
-- `zavrsiPutanju()` – zatvara i iscrtava putanju (kombinacija linija i krivih). Popunjava
+- `zavrsiFiguru()` – zatvara i iscrtava figuru (kombinacija linija i krivih). Popunjava
 - `nacrtajTacku(x, y)` – crta tačku u zadatoj tački. Veličina tačke odgovara debljini
 - `nacrtajLuk(x, y, r, ugaoOd, ugaoDo)` – crta luk (deo kruga) sa centrom u (x, y), poluprečnikom r, od ugla ugaoOd do ugaoDo (u stepenima, 0 je desno, 90 je gore).
 
