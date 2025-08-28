@@ -513,6 +513,7 @@ document.getElementById("runButton").addEventListener("click", () => {
 // Resetuj: obriši localStorage (NULL) i nacrtaj smajli
 document.getElementById("resetButton").addEventListener("click", () => {
   localStorage.removeItem("savedDrawingCode");
+  crtajPrazno();
   drawSmiley();
   prikaziInfo();
 });
