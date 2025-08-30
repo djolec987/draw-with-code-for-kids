@@ -276,9 +276,9 @@ button {
   padding: 24px;
 }
 
-.lesson-img {
-  width: auto;
+.lesson-img {  
   height: 100%;
+  width: auto;
 }
 
 #canvas-info {
